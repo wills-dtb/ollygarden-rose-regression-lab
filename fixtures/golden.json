@@ -1,0 +1,9 @@
+{
+  "cases": [
+    {"id":"missing-service-name", "description":"Agent identifies service attribution gaps in OpenTelemetry spans", "expected":["MISSING_SERVICE_NAME"]},
+    {"id":"pii-in-route", "description":"Agent catches untemplated routes containing emails and cardinality risk", "expected":["PII_IN_ROUTE","HIGH_CARDINALITY_ROUTE"]},
+    {"id":"noisy-health-spans", "description":"Agent recognizes high-volume low-value health spans", "expected":["NOISY_HEALTH_SPAN"]},
+    {"id":"healthy-instrumentation", "description":"Agent leaves good instrumentation alone", "expected":[]}
+  ],
+  "thresholds": {"min_precision":0.95,"min_recall":0.95,"min_stability":0.95,"max_total_cost_usd":0.12,"max_case_latency_ms":4000}
+}

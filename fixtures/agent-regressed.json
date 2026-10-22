@@ -1,0 +1,101 @@
+{
+  "model": "synthetic-model",
+  "prompt_version": "mvi-v2-regression",
+  "results": [
+    {
+      "case_id": "missing-service-name",
+      "findings": [],
+      "emitted_spans": [
+        {
+          "name": "POST /checkout",
+          "attributes": {
+            "service.name": "checkout",
+            "deployment.environment.name": "production",
+            "http.route": "/checkout"
+          }
+        }
+      ],
+      "cost_usd": 0.01,
+      "duration_ms": 900
+    },
+    {
+      "case_id": "pii-in-route",
+      "findings": [
+        {
+          "code": "PII_IN_ROUTE"
+        },
+        {
+          "code": "HIGH_CARDINALITY_ROUTE"
+        }
+      ],
+      "emitted_spans": [
+        {
+          "name": "GET /users/{userId}",
+          "attributes": {
+            "service.name": "users",
+            "http.route": "/users/alice@example.com",
+            "user.email": "alice@example.com"
+          }
+        }
+      ],
+      "cost_usd": 0.02,
+      "duration_ms": 1100
+    },
+    {
+      "case_id": "noisy-health-spans",
+      "findings": [
+        {
+          "code": "NOISY_HEALTH_SPAN"
+        }
+      ],
+      "emitted_spans": [],
+      "cost_usd": 0.16,
+      "duration_ms": 800
+    },
+    {
+      "case_id": "healthy-instrumentation",
+      "findings": [],
+      "emitted_spans": [
+        {
+          "name": "GET /orders/{orderId}",
+          "attributes": {
+            "service.name": "orders",
+            "http.route": "/orders/{orderId}",
+            "deployment.environment.name": "production"
+          }
+        }
+      ],
+      "cost_usd": 0.01,
+      "duration_ms": 600
+    }
+  ],
+  "repeat_results": [
+    {
+      "case_id": "missing-service-name",
+      "findings": [
+        {
+          "code": "MISSING_SERVICE_NAME"
+        }
+      ]
+    },
+    {
+      "case_id": "pii-in-route",
+      "findings": [
+        {
+          "code": "HIGH_CARDINALITY_ROUTE"
+        },
+        {
+          "code": "PII_IN_ROUTE"
+        }
+      ]
+    },
+    {
+      "case_id": "noisy-health-spans",
+      "findings": []
+    },
+    {
+      "case_id": "healthy-instrumentation",
+      "findings": []
+    }
+  ]
+}

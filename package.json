@@ -1,0 +1,13 @@
+{
+  "name": "ollygarden-rose-regression-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Independent synthetic quality, safety, stability and cost gate for agent-produced OpenTelemetry instrumentation",
+  "scripts": {
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "eval": "node --experimental-strip-types src/cli.ts",
+    "eval:regressed": "node --experimental-strip-types src/cli.ts --candidate fixtures/agent-regressed.json --output reports/regressed.json"
+  },
+  "engines": { "node": ">=22.6" }
+}
